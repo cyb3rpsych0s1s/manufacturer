@@ -6,7 +6,7 @@ import { snakeCase } from 'voca'
 import * as ejs from 'ejs'
 const fetch = async () => request('http://cyberpunk.asia/corpo.php?lng=us')
 .catch(console.error)
-const parse = (html : string): string[] => {
+const parse = (html : string) : string[] => {
   const $ = load(html)
   const rows = []
   $('body')
@@ -20,7 +20,7 @@ const parse = (html : string): string[] => {
   })
   return rows
 }
-const reduce = (rows) => {
+const reduce =rows => {
   return rows
   .reduce((activities : string[], row : string) => {
     const elements = row
@@ -29,6 +29,7 @@ const reduce = (rows) => {
     for (const element of elements) if (!activities.includes(element)) activities.push(element)
     return activities
   }, [])
+  .sort()
 }
 const map = activities => {
   return activities
