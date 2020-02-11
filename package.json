@@ -1,17 +1,47 @@
 {
+  "name": "@cyb3rpsych0s1s/manufacturer",
+  "version": "0.0.0-semantically-released",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Romain KELIFA <romain.kelifa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "request-promise-native": "^1.0.8",
+    "voca": "^1.4.0"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.0",
     "cheerio": "^1.0.0-rc.3",
+    "commitlint": "^8.3.5",
+    "commitlint-config-kroms": "^1.1.8",
     "ejs": "^3.0.1",
-    "request-promise-native": "^1.0.8",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.2",
+    "marked": "^0.8.0",
+    "remark-cli": "^7.0.0",
+    "remark-preset-lint-recommended": "^3.0.3",
+    "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5",
-    "voca": "^1.4.0"
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "generate": "yarn ts-node src/generate.ts",
+    "lint:ts": "yarn tslint -e 'node_modules/**' -e 'dist/**' -c tslint.json --fix '**/*.ts'",
+    "lint:md": "yarn remark .",
+    "lint": "yarn lint:ts && yarn lint:md",
     "prebuild": "yarn generate",
-    "build": "rm -rf dist && tsc -p tsconfig.json"
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "test": "yarn jest \"^(.*/)*(.*\\.)*(spec|test)\\.ts$\" --passWithNoTests"
   }
 }
