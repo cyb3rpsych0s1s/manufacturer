@@ -1,0 +1,3 @@
+export default [<% manufacturers.forEach(function(manufacturer){ %>
+  { name: `<%- manufacturer.name %>`, country: '<%- manufacturer.country %>', activities: [<% manufacturer.activities.forEach(function (activity, i, activities) { %>'<%- activity %>'<%= i == activities.length-1 ? '' : ', ' %><% }); %>], },<% }); %>
+]

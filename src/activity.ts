@@ -1,4 +1,4 @@
-export enum Activities {
+export enum Activity {
   A_VARIETY_OF_COMPANIES = 'a variety of companies',
   ACPA = 'acpa',
   AEROSPACE = 'aerospace',

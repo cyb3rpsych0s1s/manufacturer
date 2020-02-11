@@ -1,11 +1,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import * as request from 'request-promise-native'
 import { load } from 'cheerio'
 import { snakeCase } from 'voca'
 import * as ejs from 'ejs'
-const fetch = async () => request('http://cyberpunk.asia/corpo.php?lng=us')
-.catch(console.error)
+import fetch from './fetch'
 const parse = (html : string) : string[] => {
   const $ = load(html)
   const rows = []
@@ -36,18 +34,16 @@ const map = activities => {
   .map(activity => ({ key: snakeCase(activity).toUpperCase(), value: activity }))
 }
 const write = (filename, content) => {
-  fs.writeFileSync(path.join(__dirname, filename), content, { encoding: 'utf8' })
+  fs.writeFileSync(path.join(__dirname, '..', filename), content, { encoding: 'utf8' })
 }
 
-(async () => {
+export default async () => {
   try {
     const html = await fetch()
     const data = parse(html)
     const activities = reduce(data)
-    // console.log(activities)
     const objects = map(activities)
-    // console.log(objects)
-    const rendered = await ejs.renderFile('./src/activities.ejs', { activities: objects })
-    write('activities.ts', rendered)
+    const rendered = await ejs.renderFile(path.join(__dirname, 'enum-activity.ejs'), { activities: objects })
+    write('activity.ts', rendered)
   } catch(e) { console.error(e) }
-})()
+}

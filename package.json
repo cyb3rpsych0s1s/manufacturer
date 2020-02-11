@@ -12,6 +12,7 @@
   "author": "Romain KELIFA <romain.kelifa@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "country-list-js": "^3.1.5",
     "request-promise-native": "^1.0.8",
     "voca": "^1.4.0"
   },
@@ -36,7 +37,7 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "generate": "yarn ts-node src/generate.ts",
+    "generate": "yarn ts-node src/generate",
     "lint:ts": "yarn tslint -e 'node_modules/**' -e 'dist/**' -c tslint.json --fix '**/*.ts'",
     "lint:md": "yarn remark .",
     "lint": "yarn lint:ts && yarn lint:md",
