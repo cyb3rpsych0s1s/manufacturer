@@ -1,10 +1,14 @@
 import { <%- name %>, from, to } from './<%- filename %>'
 describe('<%- filename %>', () => {
   it('from', () => {
-    expect(from(<%- name %>.<%- key %>)).toBe('<%- value %>')
+    <% entries.forEach(function(entry){ -%>
+    expect(from(<%- name %>.<%- entry.key %>)).toBe('<%- entry.value %>')
+    <% }); -%>
   })
   it('to', () => {
-    expect(to('<%- value %>')).toBe(<%- name %>.<%- key %>)
+    <% entries.forEach(function(entry){ -%>
+    expect(to('<%- entry.value %>')).toBe(<%- name %>.<%- entry.key %>)
+    <% }); -%>
     expect(to('unknown')).toBe(undefined)
   })
 })

@@ -46,7 +46,7 @@ export default async () => {
     let rendered
     rendered = await ejs.renderFile(path.join(__dirname, 'enum.ejs'), { name: 'Activity', entries: objects })
     write('activity.ts', rendered)
-    rendered = await ejs.renderFile(path.join(__dirname, 'enum.test.ejs'), { name: 'Activity', filename: 'activity', key: objects[1].key, value: objects[1].value })
+    rendered = await ejs.renderFile(path.join(__dirname, 'enum.test.ejs'), { name: 'Activity', filename: 'activity', entries: objects })
     write('activity.test.ts', rendered)
   } catch(e) { console.error(e) }
 }
