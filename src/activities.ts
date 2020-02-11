@@ -1,4 +1,4 @@
-enum Activities {
+export enum Activities {
   ROBOTICS = 'robotics',
   CYBERNETICS = 'cybernetics',
   MEDICAL_EQUIPMENT = 'medical equipment',
