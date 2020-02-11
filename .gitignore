@@ -1,0 +1,6 @@
+dist/
+*.sqlite
+*.sqlite.sqbpro
+**/crawl/
+yarn-error.log
+my-tests/

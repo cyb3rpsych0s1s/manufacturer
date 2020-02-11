@@ -1,0 +1,46 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+      "tslint:latest",
+      "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "no-implicit-dependencies": [true, "dev"],
+    "no-empty-interface": false,
+    "indent": [true, "spaces", 2],
+    "semicolon": [true, "never"],
+    "no-unnecessary-initializer": false,
+    "no-console": false,
+    "object-literal-sort-keys": false,
+    "ban-types": false,
+    "no-var-requires": false,
+    "no-shadowed-variable": false,
+    "variable-name": false,
+    "interface-name" : [true, "never-prefix"],
+    "quotemark": [true, "single"],
+    "curly": [true, "ignore-same-line"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "member-access": [true, "no-public"],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "no-string-literal": false,
+    "forin": false
+  },
+  "rulesDirectory": []
+}

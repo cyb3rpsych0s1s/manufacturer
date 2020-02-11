@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["dom","es2015","es2016","es2017","es2018"],
+    "types" : ["node", "@types/jest"],
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "src/seeds/**",
+    "src/generate.ts",
+    "**/*.stories.[tj]s",
+    "node_modules",
+    "dist"
+  ]
+}
