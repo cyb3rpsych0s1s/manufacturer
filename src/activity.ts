@@ -103,3 +103,6 @@ export enum Activity {
   VIRTUAL_REALITIES = 'virtual realities',
   WEAPONRY = 'weaponry',
 }
+
+export const from = (input : Activity) : string => input.valueOf()
+export const to = (input : string) : Activity => Activity[Object.keys(Activity).find(key => Activity[key] === input)]

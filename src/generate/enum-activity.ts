@@ -43,7 +43,10 @@ export default async () => {
     const data = parse(html)
     const activities = reduce(data)
     const objects = map(activities)
-    const rendered = await ejs.renderFile(path.join(__dirname, 'enum-activity.ejs'), { activities: objects })
+    let rendered
+    rendered = await ejs.renderFile(path.join(__dirname, 'enum.ejs'), { name: 'Activity', entries: objects })
     write('activity.ts', rendered)
+    rendered = await ejs.renderFile(path.join(__dirname, 'enum.test.ejs'), { name: 'Activity', filename: 'activity', key: objects[1].key, value: objects[1].value })
+    write('activity.test.ts', rendered)
   } catch(e) { console.error(e) }
 }

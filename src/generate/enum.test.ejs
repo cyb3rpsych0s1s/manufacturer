@@ -1,0 +1,10 @@
+import { <%- name %>, from, to } from './<%- filename %>'
+describe('<%- filename %>', () => {
+  it('from', () => {
+    expect(from(<%- name %>.<%- key %>)).toBe('<%- value %>')
+  })
+  it('to', () => {
+    expect(to('<%- value %>')).toBe(<%- name %>.<%- key %>)
+    expect(to('unknown')).toBe(undefined)
+  })
+})
