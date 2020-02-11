@@ -8,4 +8,6 @@ All the credits for the effort goes to their website maintainer, and all the cre
 
 # scripts
 
-*  `generate` : will create `activities.ts` from the online resource
+*  `generate` will create :
+   *  `Activity` enum inside `activity.ts` from the online resource
+   *  seeds inside `manufacturers.ts` from the online resource
