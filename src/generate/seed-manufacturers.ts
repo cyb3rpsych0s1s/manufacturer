@@ -1,10 +1,12 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import { debug, warn, info } from '../logger'
 import { load } from 'cheerio'
 import * as ejs from 'ejs'
 import fetch from './fetch'
 const countries = require('country-list-js')
 const parse = (html : string) : string[] => {
+  debug('parsing html')
   let root
   let name
   let country
@@ -67,6 +69,7 @@ const code = (country : string) : string|undefined => {
   return found ? found.code.iso2 : undefined
 }
 const map = manufacturers => {
+  debug('mapping data')
   return manufacturers
   .map(({ name, country, activities }) => ({
     name,
@@ -75,7 +78,9 @@ const map = manufacturers => {
   }))
 }
 const write = (filename, content) => {
-  fs.writeFileSync(path.join(__dirname, '..', filename), content, { encoding: 'utf8' })
+  const at = path.join(__dirname, '..', filename)
+  warn(`writing ${at}`)
+  fs.writeFileSync(at, content, { encoding: 'utf8' })
 }
 
 export default async () => {

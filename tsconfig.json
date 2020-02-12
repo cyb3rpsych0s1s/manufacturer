@@ -17,7 +17,7 @@
     "**/*.spec.ts",
     "**/*.test.ts",
     "src/seeds/**",
-    "src/generate.ts",
+    "src/generate/**",
     "**/*.stories.[tj]s",
     "node_modules",
     "dist"

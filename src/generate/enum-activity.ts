@@ -1,10 +1,12 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import { debug, info, warn } from '../logger'
 import { load } from 'cheerio'
 import { snakeCase } from 'voca'
 import * as ejs from 'ejs'
 import fetch from './fetch'
 const parse = (html : string) : string[] => {
+  debug('parsing html')
   const $ = load(html)
   const rows = []
   $('body')
@@ -18,7 +20,8 @@ const parse = (html : string) : string[] => {
   })
   return rows
 }
-const reduce =rows => {
+const reduce = rows => {
+  debug('reducing data')
   return rows
   .reduce((activities : string[], row : string) => {
     const elements = row
@@ -30,11 +33,14 @@ const reduce =rows => {
   .sort()
 }
 const map = activities => {
+  debug('mapping data')
   return activities
   .map(activity => ({ key: snakeCase(activity).toUpperCase(), value: activity }))
 }
 const write = (filename, content) => {
-  fs.writeFileSync(path.join(__dirname, '..', filename), content, { encoding: 'utf8' })
+  const at = path.join(__dirname, '..', filename)
+  warn(`writing ${at}`)
+  fs.writeFileSync(at, content, { encoding: 'utf8' })
 }
 
 export default async () => {
@@ -47,6 +53,6 @@ export default async () => {
     rendered = await ejs.renderFile(path.join(__dirname, 'enum.ejs'), { name: 'Activity', entries: objects })
     write('activity.ts', rendered)
     rendered = await ejs.renderFile(path.join(__dirname, 'enum.test.ejs'), { name: 'Activity', filename: 'activity', entries: objects })
-    write('activity.test.ts', rendered)
+    write('activity.spec.ts', rendered)
   } catch(e) { console.error(e) }
 }

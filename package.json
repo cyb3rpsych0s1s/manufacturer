@@ -20,6 +20,7 @@
     "@commitlint/cli": "^8.3.5",
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.0",
+    "chalk": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
     "commitlint": "^8.3.5",
     "commitlint-config-kroms": "^1.1.8",
@@ -34,7 +35,8 @@
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "winston": "^3.2.1"
   },
   "scripts": {
     "generate": "yarn ts-node src/generate",
