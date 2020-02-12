@@ -78,7 +78,7 @@ const map = manufacturers => {
   }))
 }
 const write = (filename, content) => {
-  const at = path.join(__dirname, '..', filename)
+  const at = path.join(__dirname, '..', 'seeds', filename)
   warn(`writing ${at}`)
   fs.writeFileSync(at, content, { encoding: 'utf8' })
 }
