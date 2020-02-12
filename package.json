@@ -12,6 +12,7 @@
   "author": "Romain KELIFA <romain.kelifa@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "country-list-js": "^3.1.5",
     "request-promise-native": "^1.0.8",
     "voca": "^1.4.0"
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@types/jest": "^25.1.2",
+    "@types/joi": "^14.3.4",
     "@types/node": "^13.7.0",
     "chalk": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",

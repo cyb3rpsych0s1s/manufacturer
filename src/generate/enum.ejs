@@ -1,6 +1,11 @@
+import * as Joi from '@hapi/joi'
 export enum <%- name %> {<% entries.forEach(function(entry){ %>
   <%- entry.key %> = '<%- entry.value %>',<% }); %>
 }
 
 export const from = (input : <%- name %>) : string => input.valueOf()
 export const to = (input : string) : <%- name %> => <%- name %>[Object.keys(<%- name %>).find(key => <%- name %>[key] === input)]
+export const validator = Joi
+.string()
+.valid(...Object.values(<%- name %>))
+.required()

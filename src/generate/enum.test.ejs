@@ -1,4 +1,4 @@
-import { <%- name %>, from, to } from './<%- filename %>'
+import { <%- name %>, from, to, validator } from './<%- filename %>'
 describe('<%- filename %>', () => {
   it('from', () => {
     <% entries.forEach(function(entry){ -%>
@@ -10,5 +10,12 @@ describe('<%- filename %>', () => {
     expect(to('<%- entry.value %>')).toBe(<%- name %>.<%- entry.key %>)
     <% }); -%>
     expect(to('unknown')).toBe(undefined)
+  })
+  it('validator', () => {
+    <% entries.forEach(function(entry){ -%>
+      expect(validator.validate('<%- entry.value %>')).not.toHaveProperty('error')
+    <% }); -%>
+    expect(validator.validate('unknown')).toHaveProperty('error')
+    expect(validator.validate(undefined)).toHaveProperty('error')
   })
 })

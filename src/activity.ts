@@ -1,3 +1,4 @@
+import * as Joi from '@hapi/joi'
 export enum Activity {
   A_VARIETY_OF_COMPANIES = 'a variety of companies',
   ACPA = 'acpa',
@@ -106,3 +107,7 @@ export enum Activity {
 
 export const from = (input : Activity) : string => input.valueOf()
 export const to = (input : string) : Activity => Activity[Object.keys(Activity).find(key => Activity[key] === input)]
+export const validator = Joi
+.string()
+.valid(...Object.values(Activity))
+.required()
