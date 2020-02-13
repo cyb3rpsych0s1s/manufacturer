@@ -1,0 +1,31 @@
+@import url('https://db.onlinewebfonts.com/c/a082fd3df68a0b54e0d4d794bc38d268?family=Blender+Pro+Bold');
+@import url('https://fonts.googleapis.com/css?family=Megrim&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+@font-face {
+  font-family: 'Blender Pro Bold', sans-serif;
+  src: url('/sector_034.ttf') local('/sector_034.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Weapons';
+  src: url('/weapons.ttf') format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: medium;
+  letter-spacing: 0.02em;
+  color: #010001;
+}
+.container {
+  width: 95%;
+  display: inline-block;
+}
+.header {
+  font-family: 'Audiowide', 'sans-serif';
+  font-size: x-large;
+}
+body {
+  margin: 10px;
+}

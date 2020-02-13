@@ -7,32 +7,30 @@ import fetch from './fetch'
 const countries = require('country-list-js')
 const parse = (html : string) : string[] => {
   debug('parsing html')
-  let root
-  let name
-  let country
-  let activities
   const $ = load(html)
   const rows = []
   $('body')
   .find($('tbody'))
-  .map((i, el) => {
-    root = $(el).find('tr')
-    name = $(root)
-    .find('td')
-    .first()
-    .text()
-    country = $(root)
-    .next()
-    .find('td')
-    .next()
-    .html()
-    activities = $(root)
-    .next()
-    .next()
-    .find('td')
-    .next()
-    .html()
-    rows.push({ name, country, activities })
+  .map((i, e) => {
+    const buffer = []
+    let found
+    let name
+    let country
+    let activities
+    let background
+    $(e)
+    .find('tr')
+    .contents()
+    .map((i, e) => {
+      buffer.push($(e).text())
+    })
+    name = buffer[0]
+    country = buffer[2]
+    found = buffer.findIndex(v => v.toLowerCase() === 'activities')
+    activities = buffer[found + 1]
+    found = buffer.findIndex(v => v.toLowerCase() === 'background')
+    if (found !== -1) background = buffer[found + 1]
+    rows.push({ name, country, activities, background })
   })
   return rows
 }
@@ -71,10 +69,11 @@ const code = (country : string) : string|undefined => {
 const map = manufacturers => {
   debug('mapping data')
   return manufacturers
-  .map(({ name, country, activities }) => ({
+  .map(({ name, country, activities, background }) => ({
     name,
     country: code(extract(country)),
-    activities: activities.split(',').map(s => s.toLowerCase().trim())
+    activities: activities.split(',').map(s => s.toLowerCase().trim()),
+    background,
   }))
 }
 const write = (filename, content) => {

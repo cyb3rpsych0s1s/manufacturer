@@ -13,15 +13,24 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
+    "augmented-ui": "^1.1.0",
     "country-list-js": "^3.1.5",
+    "flag-icon-css": "^3.4.6",
+    "gsap": "^3.1.1",
     "request-promise-native": "^1.0.8",
-    "voca": "^1.4.0"
+    "voca": "^1.4.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
+    "@storybook/vue": "^5.3.13",
     "@types/jest": "^25.1.2",
     "@types/joi": "^14.3.4",
     "@types/node": "^13.7.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
     "chalk": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
     "commitlint": "^8.3.5",
@@ -34,6 +43,7 @@
     "mongo-seeding": "^3.4.0-alpha.1",
     "remark-cli": "^7.0.0",
     "remark-preset-lint-recommended": "^3.0.3",
+    "storybook": "^5.3.13",
     "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0",
@@ -49,6 +59,7 @@
     "prebuild": "yarn generate",
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "test": "yarn jest \"^(.*/)*(.*\\.)*(spec|test)\\.ts$\" --passWithNoTests",
-    "seed": "yarn ts-node src/seed.ts"
+    "seed": "yarn ts-node src/seed.ts",
+    "storybook": "yarn start-storybook -s ./src/assets/fonts"
   }
 }
