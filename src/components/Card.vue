@@ -53,7 +53,7 @@
   .top {
     display: flex;
     justify-content: space-between;
-    padding-left: 20px;
+    padding-left: 15px;
   }
   .middle {
     display: flex;
@@ -84,6 +84,7 @@
     font-style: italic;
   }
   .header {
+    font-family: 'Audiowide', 'sans-serif';
     text-transform: uppercase;
     color: #f6ee82;
   }

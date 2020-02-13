@@ -21,13 +21,16 @@
 <script lang="ts">
   import Vue from 'vue'
   import gsap from 'gsap'
+  let initialized
   export default Vue.extend({
     name: 'Header',
     mounted: () => {
+      if (initialized) return
       const timeline = gsap.timeline()
       timeline.from('.title', { opacity: 0.1, duration: .5 })
       timeline.fromTo('h2', { duration: .2, color: '#faed51' }, { color: '#010001', repeat: 1 }, '+=0.2')
       timeline.fromTo('h6', { duration: .2, color: '#faed51' }, { color: '#010001', repeat: 2 }, '+=0.2')
+      initialized = true
     }
   })
 </script>
@@ -45,6 +48,7 @@
     padding-right: 2em;
     fill: #59541c;
     cursor: pointer;
+    user-select: none;
   }
   svg:hover, svg:active, svg:focus {
     fill: #010001;
@@ -56,7 +60,7 @@
   h1, h2 {
     text-transform: uppercase;
     font-weight: 700;
-    color: #faed51;
+    color: #faed51;;
   }
   h1 {
     font-family: 'Audiowide', 'sans-serif';
@@ -72,18 +76,20 @@
                0 10px 10px #464546;
   }
   h2 {
-    font-family: 'Tulpen One', 'sans-serif';
-    font-size: 40px;
+    font-family: 'Audiowide', 'sans-serif';
+    font-size: x-large;
     text-shadow: 0 0 5px #6b6523;
-    padding-top: 10px;
     padding-left: 4px;
     padding-right: 4px;
+    padding-top: 4px;
+    color: #010001;
   }
   h6 {
     margin-left: auto;
-    margin-top: auto;
-    margin-right: 1em;
+    margin-top: 0;
+    margin-right: 0;
     order: 2;
     color: #010001;
+    text-decoration: overline;
   }
 </style>

@@ -20,8 +20,7 @@
   color: #010001;
 }
 .container {
-  display: inline-block;
-  width: 99%;
+  display: block;
   min-width: 500px;
 }
 body {
