@@ -1,10 +1,8 @@
 <template>
   <div class="container">
-    <div class="augmented top" augmented-ui="l-clip r-clip exe">
+    <div class="top">
       <h1 class="header">{{ manufacturer.name }}</h1>
-      <span :class="flagclass(manufacturer.country)" />
     </div>
-    <div class="spacer wide"/>
     <div class="middle">
       <ul>
         <li
@@ -15,6 +13,7 @@
           {{ activity }}
         </li>
       </ul>
+      <span :class="flagclass(manufacturer.country)" />
     </div>
     <div class="spacer tiny"/>
     <div :class="backgroundclass(manufacturer.background)" augmented-ui="br-clip exe">
@@ -48,11 +47,15 @@
   .augmented {
     padding: 15px;
     text-align: left;
-    --aug-inset-bg: #faed51;
     --aug-l: 5px;
     --aug-r: 5px;
   }
   .top {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+  }
+  .middle {
     display: flex;
     justify-content: space-between;
   }
@@ -61,9 +64,8 @@
     --aug-inset-bg: #f6ee82;
   }
   .country {
-    width: 30px;
-    height: 30px;
-    float: right;
+    width: 20px;
+    height: 20px;
   }
   ul {
     list-style: none;
@@ -80,5 +82,9 @@
   }
   .none {
     font-style: italic;
+  }
+  .header {
+    text-transform: uppercase;
+    color: #f6ee82;
   }
 </style>

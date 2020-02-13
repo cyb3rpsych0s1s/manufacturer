@@ -20,9 +20,19 @@
   color: #010001;
 }
 .container {
-  width: 95%;
   display: inline-block;
+  width: 99%;
+  min-width: 500px;
 }
 body {
   margin: 10px;
+}
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: x-large;
+}
+h6 {
+  font-size: smaller;
 }

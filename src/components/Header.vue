@@ -42,7 +42,7 @@
   svg {
     float: left;
     width: 40px;
-    padding-right: 100px;
+    padding-right: 2em;
     fill: #59541c;
     cursor: pointer;
   }
@@ -51,14 +51,15 @@
   }
   .title {
     display: flex;
+    padding-right: 2em;
   }
   h1, h2 {
-    font-family: 'Audiowide', 'sans-serif';
     text-transform: uppercase;
     font-weight: 700;
     color: #faed51;
   }
   h1 {
+    font-family: 'Audiowide', 'sans-serif';
     font-size: xx-large;
     text-shadow: 0 1px 0 #a29a36,
                0 2px 0 #6b6523,
@@ -81,8 +82,8 @@
   h6 {
     margin-left: auto;
     margin-top: auto;
+    margin-right: 1em;
     order: 2;
-    font-size: smaller;
     color: #010001;
   }
 </style>
