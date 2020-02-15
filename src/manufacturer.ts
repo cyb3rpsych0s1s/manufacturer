@@ -11,7 +11,7 @@ export class Manufacturer {
     this.activities = activities // activities.map(s => activity.to(s))
     if (background) this.background = background
   }
-  @prop({ required: true })
+  @prop({ required: true, unique: true })
   name : string
   @prop({ required: true })
   country : string

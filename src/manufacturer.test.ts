@@ -1,12 +1,14 @@
-import { Manufacturer, ManufacturerModel } from './manufacturer'
+import { database_name, database_host, database_port, database_drop } from './environment'
+import { Manufacturer, ManufacturerModel } from '.'
 import manufacturers from './seeds/manufacturers'
 import * as mongoose from 'mongoose'
 const setup = async () => {
-  await mongoose.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'test' })
+  await mongoose.connect(`mongodb://${database_host}:${database_port}`,
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, dbName: database_name })
   return true
 }
 const teardown = async () => {
-  await mongoose.connection.db.dropDatabase()
+  if (database_drop) await mongoose.connection.db.dropDatabase()
   await mongoose.connection.close()
   return true
 }

@@ -16,6 +16,7 @@
     "@typegoose/typegoose": "^6.3.2",
     "augmented-ui": "^1.1.0",
     "country-list-js": "^3.1.5",
+    "dotenv": "^8.2.0",
     "flag-icon-css": "^3.4.6",
     "gsap": "^3.1.1",
     "mongoose": "^5.9.1",
@@ -23,7 +24,8 @@
     "voca": "^1.4.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "yn": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
