@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.3 469.3">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.3 469.3" v-on:click="onClick">
       <path d="M53.3 106.7H416c29.4 0 53.3-23.9 53.3-53.3S445.4 0 416 0H53.3C23.9 0 0 23.9 0 53.3S23.9 106.7 53.3 106.7z"/>
       <path d="M416 181.3H53.3C23.9 181.3 0 205.3 0 234.7S23.9 288 53.3 288H416c29.4 0 53.3-23.9 53.3-53.3S445.4 181.3 416 181.3z"/>
       <path d="M416 362.7H53.3C23.9 362.7 0 386.6 0 416s23.9 53.3 53.3 53.3H416c29.4 0 53.3-23.9 53.3-53.3S445.4 362.7 416 362.7z"/>
@@ -24,6 +24,9 @@
   let initialized
   export default Vue.extend({
     name: 'Header',
+    props: {
+      onClick: { type: Function, default: () => { alert('clicked') } }
+    },
     mounted: () => {
       if (initialized) return
       const timeline = gsap.timeline()

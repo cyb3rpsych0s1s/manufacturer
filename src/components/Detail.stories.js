@@ -11,7 +11,7 @@ export const arasaka = () => ({
   props: {
     manufacturer: {
       default: () => manufacturers.find(({ name }) => name.toLowerCase() === 'arasaka')
-    }
+    },
   },
 })
 

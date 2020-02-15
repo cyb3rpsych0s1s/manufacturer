@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header class="top" />
+    <Header class="top" :onClick="onClick" />
     <Card class="bottom" :manufacturer="manufacturer" />
   </div>
 </template>
@@ -13,7 +13,8 @@ export default Vue.extend({
   name: 'Detail',
   components: { Header, Card },
   props: {
-    manufacturer: Object
+    manufacturer: Object,
+    onClick: Function
   },
 })
 </script>
