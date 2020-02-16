@@ -1,6 +1,7 @@
 import { Seeder } from 'mongo-seeding'
 import { SeederDatabaseConfig } from 'mongo-seeding/dist/database'
 import { database_name, database_host, database_port, database_drop } from './environment'
+import { NAME } from '.'
 import manufacturers from './seeds/manufacturers'
 const config : SeederDatabaseConfig = {
   protocol: 'mongodb',
@@ -12,14 +13,14 @@ const seeder = new Seeder({
   database: config,
   dropDatabase: database_drop
 })
-const run = async () => {
+const seed = async () => {
   try {
     await seeder.import([
       {
-        name: 'manufacturer',
-        documents: manufacturers,
+        name: NAME,
+        documents: manufacturers.sort(),
       }
     ])
   } catch (e) { console.error(e) }
 }
-run()
+seed()
