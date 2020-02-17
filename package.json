@@ -71,7 +71,6 @@
     "lint:md": "yarn remark .",
     "lint": "yarn lint:ts && yarn lint:md",
     "build": "rm -rf dist && tsc -p tsconfig.json",
-    "pretest": "yarn seed",
     "test": "yarn jest \"^(.*/)*(.*\\.)*(spec|test)\\.ts$\" --passWithNoTests",
     "seed": "yarn ts-node src/seed.ts",
     "storybook": "yarn start-storybook -s ./src/assets/fonts",
