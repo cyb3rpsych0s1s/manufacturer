@@ -1,0 +1,31 @@
+service: manufacturers
+
+plugins:
+  - serverless-offline
+  - serverless-jest-plugin
+
+custom:
+  jest:
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 128 # optional, in MB, default is 1024
+  timeout: 30
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-1
+  profile: default
+  logRetentionInDays: 1
+  apiGateway:
+    description: Manufacturers service
+    # restApiId: ${cf:cyb3rpsych0s1s-outputs:rest-api-id}
+    # restApiRootResourceId: ${cf:cyb3rpsych0s1s-outputs:rest-api-root-resource-id}
+
+functions:
+  fetch:
+    handler: dist/aws.fetch
+    events:
+      - http:
+          path: manufacturers
+          method: get
+          cors: true

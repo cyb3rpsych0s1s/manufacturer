@@ -11,7 +11,8 @@
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true
+    "declaration": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "**/*.spec.ts",
