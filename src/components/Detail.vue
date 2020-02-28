@@ -1,31 +1,18 @@
 <template>
   <div class="container">
-    <Header class="top" :onClick="onClick" />
-    <Card class="bottom" :manufacturer="manufacturer" />
+    <Card :manufacturer="manufacturer" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Header from './Header.vue'
 import Card from './Card.vue'
 export default Vue.extend({
   name: 'Detail',
-  components: { Header, Card },
+  components: { Card },
   props: {
     manufacturer: Object,
     onClick: Function
   },
 })
 </script>
-
-<style scoped>
-  .top {
-    margin-bottom: 30px;
-  }
-  .bottom {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-  }
-</style>

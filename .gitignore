@@ -4,3 +4,4 @@ dist/
 **/crawl/
 yarn-error.log
 my-tests/
+.nuxt/

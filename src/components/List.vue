@@ -6,18 +6,20 @@
           v-for="item in items"
           v-bind:item="item"
           v-bind:key="item.name">
-          <div class="card">
-            <span :class="flagclass(item)" />
-            <span class="header">{{ item.name }}</span>
-            <div class="activities">
-              <span 
-              v-for="activity in sort(item.activities)"
-              :key="activity"
-              class="activity">
-                {{ activity }}
-              </span>
+          <nuxt-link :to="slugify(item.name)">
+            <div class="card">
+              <span :class="flagclass(item)" />
+              <span class="header">{{ item.name }}</span>
+              <div class="activities">
+                <span 
+                v-for="activity in sort(item.activities)"
+                :key="activity"
+                class="activity">
+                  {{ activity }}
+                </span>
+              </div>
             </div>
-          </div>
+          </nuxt-link>
         </li>
       </ol>
     </main>
@@ -26,6 +28,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
+  import { slugify } from 'voca'
   export default Vue.extend({
     name: 'List',
     props: {
@@ -36,7 +39,8 @@
     },
     methods: {
       flagclass: item => `country flag-icon flag-icon-${item.country.toLowerCase()}`,
-      sort: array => array.sort()
+      sort: array => array.sort(),
+      slugify: name => slugify(name)
     }
   })
 </script>

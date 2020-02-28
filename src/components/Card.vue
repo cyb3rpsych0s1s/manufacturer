@@ -6,7 +6,7 @@
     <div class="middle">
       <ul>
         <li
-        v-for="activity in sort(manufacturer.activities)"
+        v-for="activity in sorted"
         :item="activity"
         :key="activity"
         augmented-ui="tl-clip exe">
@@ -31,8 +31,10 @@
     },
     methods: {
       flagclass: iso2 => `country flag-icon flag-icon-${iso2.toLowerCase()} flag-icon-squared`,
-      sort: array => array.sort(),
       backgroundclass: background => background ? 'augmented bottom' : 'augmented bottom none'
+    },
+    computed: {
+      sorted: function () { return this.manufacturer ? this.manufacturer.activities.sort() : ['unknown'] }
     }
   })
 </script>
@@ -72,6 +74,7 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    padding: 0;
   }
   li {
     color: #010001;
