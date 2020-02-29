@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common'
 import { TypegooseModule } from 'nestjs-typegoose'
+import environment from '../environment'
 import { ManufacturersController } from './manufacturer.controller'
 import { ManufacturerService } from './manufacturer.service'
 import { Manufacturer, NAME } from './model'
-import { database_options } from '../environment'
+const { database_options } = environment()
 @Module({
   imports: [TypegooseModule.forFeature([{
     typegooseClass: Manufacturer,

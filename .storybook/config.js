@@ -1,6 +1,6 @@
 import 'augmented-ui/augmented.css'
 import 'flag-icon-css/css/flag-icon.css'
-import '../src/assets/css/global.css'
+import '../src/app/assets/css/global.css'
 
 import Vue from 'vue'
 
@@ -17,7 +17,7 @@ Vue.component('nuxt-link', {
   template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
 })
 
-const req = require.context('../src/components', true, /\.stories\.js$/)
+const req = require.context('../src/app/components', true, /\.stories\.js$/)
 function loadStories() {
   req.keys().forEach(filename => req(filename))
 }

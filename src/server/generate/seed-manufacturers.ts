@@ -79,7 +79,7 @@ const map = manufacturers => {
 const write = (filename, content) => {
   const at = filename.indexOf('.ts') !== -1
   ? path.join(__dirname, '..', 'seeds', filename)
-  : path.join(__dirname, '..', 'static', filename)
+  : path.join(__dirname, '..', '..', 'app', 'static', filename)
   warn(`writing ${at}`)
   fs.writeFileSync(at, content, { encoding: 'utf8' })
 }

@@ -1,13 +1,14 @@
-import middy from 'middy'
-import { jsonBodyParser, cors, doNotWaitForEmptyEventLoop } from 'middy/middlewares'
-import { database_host, database_options, database_port, database_name } from './environment'
 import { getModelForClass, mongoose } from '@typegoose/typegoose'
+import middy from 'middy'
+import { cors, doNotWaitForEmptyEventLoop, jsonBodyParser } from 'middy/middlewares'
+import environment from './environment'
 import { Manufacturer } from './manufacturer'
+const { database_host, database_options, database_port, database_name } = environment()
 let connection
 let model
 const connect = async (name = undefined) => {
   if (!connection) {
-    connection = await mongoose.connect(`mongodb://${database_host}:${database_port}/${name ? name : database_name}`, database_options)
+    connection = await mongoose.connect(`mongodb://${database_host}:${database_port}/${database_name}`, database_options)
     model = getModelForClass(Manufacturer, { existingConnection: connection })
   }
   return model
@@ -17,8 +18,8 @@ export const clean = async () => {
   model = undefined
   connection = undefined
 }
-export const _fetch = async (name = undefined) => {
-  const model = await connect(name)
+export const _fetch = async () => {
+  const model = await connect()
   const manufacturers = await model.find().lean()
   return { statusCode: 200, body: JSON.stringify(manufacturers) }
 }

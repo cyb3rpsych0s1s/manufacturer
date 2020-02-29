@@ -5,7 +5,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import List from '../components/List.vue'
-import items from '../seeds/manufacturers'
+import items from '../static/manufacturers.json'
 export default Vue.extend({
   components: { List },
   computed: {

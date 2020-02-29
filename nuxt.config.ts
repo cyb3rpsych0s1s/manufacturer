@@ -1,7 +1,7 @@
 import { slugify } from 'voca'
 // tslint:disable-next-line:no-implicit-dependencies
 import colors from 'vuetify/es5/util/colors'
-import manufacturers from './src/seeds/manufacturers'
+import manufacturers from './src/server/seeds/manufacturers'
 console.log('nuxt.config.ts')
 const routes = async () => manufacturers.map(manufacturer => ({
   route: `/${slugify(manufacturer.name)}`,
@@ -62,19 +62,10 @@ export default {
     'flag-icon-css/css/flag-icon.css',
     '~assets/css/global.css'
   ],
-  srcDir: 'src/',
+  srcDir: 'src/app/',
   typescript: {
     typeCheck: true,
     ignoreNotFoundWarnings: true,
-    loaders: {
-      ts: {
-        compilerOptions: {
-          outDir: 'dist',
-          target: 'es2018',
-          module: 'esnext',
-        }
-      },
-    }
   },
   debug: true
 }

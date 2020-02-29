@@ -1,5 +1,5 @@
 import Details from './Details'
-import manufacturers from '../seeds/manufacturers.ts'
+import manufacturers from '../../server/seeds/manufacturers.ts'
 
 export default {
   title: 'Details',

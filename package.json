@@ -28,6 +28,7 @@
     "mongoose": "^5.9.2",
     "nestjs-typegoose": "^7.1.0",
     "nuxt": "^2.11.0",
+    "ramda": "^0.27.0",
     "voca": "^1.4.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.0",
@@ -80,22 +81,22 @@
     "winston": "^3.2.1"
   },
   "scripts": {
-    "generate": "yarn ts-node src/generate",
+    "generate": "yarn ts-node --project tsconfig.server.json src/server/generate",
     "postgenerate": "yarn build",
     "lint:ts": "yarn tslint -e 'node_modules/**' -e 'dist/**' -e 'lib/**' -e '.nuxt/**' -c tslint.json --fix '**/*.ts'",
     "lint:md": "yarn remark .",
     "lint": "yarn lint:ts && yarn lint:md",
-    "build": "rm -rf lib && tsc -p tsconfig.json",
+    "build": "rm -rf lib && tsc -p tsconfig.server.json",
     "test": "yarn jest \"^(.*/)*(.*\\.)*(spec|test)\\.ts$\" --passWithNoTests",
-    "seed": "yarn ts-node src/seed.ts",
-    "storybook": "yarn start-storybook -s ./src/static",
+    "seed": "yarn ts-node --project tsconfig.server.json src/server/seed.ts",
+    "storybook": "yarn start-storybook -s ./src/app/static",
     "prebootstrap": "yarn seed",
-    "bootstrap": "yarn ts-node src/bootstrap.ts",
+    "bootstrap": "yarn ts-node --project tsconfig.server.json src/server/bootstrap.ts",
     "preoffline": "yarn build && node lib/seed.js",
     "offline": "yarn serverless offline",
+    "dev": "yarn nuxt-ts",
     "bundle": "yarn nuxt-ts generate",
     "start": "yarn nuxt-ts start",
-    "restart": "yarn bundle && yarn start",
-    "dev": "yarn nuxt-ts"
+    "restart": "yarn bundle && yarn start"
   }
 }

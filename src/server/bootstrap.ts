@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
 import { TypegooseModule } from 'nestjs-typegoose'
-import { database_host, database_name, database_options, database_port, server_host, server_port } from './environment'
+import environment from './environment'
 import { ManufacturersModule } from './manufacturer'
+const { database_host, database_options, database_port, database_name, server_host, server_port } = environment()
 @Module({
   imports: [
     TypegooseModule.forRoot(`mongodb://${database_host}:${database_port}/${database_name}`, database_options),

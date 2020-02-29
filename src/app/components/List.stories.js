@@ -1,5 +1,5 @@
 import List from './List'
-import items from '../seeds/manufacturers.ts'
+import items from '../../server/seeds/manufacturers.ts'
 
 export default {
   title: 'List',

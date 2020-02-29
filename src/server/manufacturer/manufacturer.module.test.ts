@@ -3,12 +3,15 @@ import { mongoose } from '@typegoose/typegoose'
 import { TypegooseModule } from 'nestjs-typegoose'
 import * as path from 'path'
 import request from 'supertest'
-import { database_host, database_options, database_port } from '../environment'
 import { seed } from '../seeds'
 import manufacturers from '../seeds/manufacturers'
+import environment from '../environment'
 import { ManufacturersModule } from './manufacturer.module'
-const seal : any = {}
 const dashedName = path.basename(__filename).replace(/\./g, '-')
+const { database_host, database_options, database_port, database_name } = environment({
+  database_name: dashedName
+})
+const seal : any = {}
 const setup = async () => {
   await seed(dashedName)
   const reference = await Test.createTestingModule({

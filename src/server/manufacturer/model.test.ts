@@ -1,12 +1,14 @@
 import { getModelForClass, mongoose } from '@typegoose/typegoose'
 import * as path from 'path'
-import { database_host, database_options, database_port } from '../environment'
+import environment from '../environment'
 import manufacturers from '../seeds/manufacturers'
 import { Manufacturer } from './model'
+const { database_host, database_options, database_port, database_name } = environment({
+  database_name: path.basename(__filename).replace(/\./g, '-')
+})
 const seal : any = {}
-const dashedName = path.basename(__filename).replace(/\./g, '-')
 const setup = async () => {
-  await mongoose.connect(`mongodb://${database_host}:${database_port}/${dashedName}`, database_options)
+  await mongoose.connect(`mongodb://${database_host}:${database_port}/${database_name}`, database_options)
   seal.model = getModelForClass(Manufacturer)
   return true
 }
