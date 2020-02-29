@@ -6,6 +6,10 @@
           v-for="item in items"
           v-bind:item="item"
           v-bind:key="item.name">
+          <!--
+            TODO: try nuxt-storybook or find alternative
+            here component is different between nuxt and storybook
+          -->
           <nuxt-link :to="slugify(item.name)">
             <div class="card">
               <span :class="flagclass(item)" />
