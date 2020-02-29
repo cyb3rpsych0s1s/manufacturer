@@ -3,20 +3,16 @@
     <main>
       <ol>
         <li
-          v-for="item in items"
+          v-for="item in sorted"
           v-bind:item="item"
           v-bind:key="item.name">
-          <!--
-            TODO: try nuxt-storybook or find alternative
-            here component is different between nuxt and storybook
-          -->
           <nuxt-link :to="slugify(item.name)">
-            <div class="card">
-              <span :class="flagclass(item)" />
+            <div class="details">
+              <span :class="flagclass(item.country)" />
               <span class="header">{{ item.name }}</span>
               <div class="activities">
                 <span 
-                v-for="activity in sort(item.activities)"
+                v-for="activity in item.activities"
                 :key="activity"
                 class="activity">
                   {{ activity }}
@@ -42,9 +38,20 @@
       }
     },
     methods: {
-      flagclass: item => `country flag-icon flag-icon-${item.country.toLowerCase()}`,
-      sort: array => array.sort(),
+      flagclass: country => `country flag-icon flag-icon-${country.toLowerCase()}`,
       slugify: name => slugify(name)
+    },
+    computed: {
+      sorted: function () {
+        return this.items
+        ? this.items
+          .map(item => ({
+            ...item,
+            activities: item.activities.sort()
+          }))
+          .sort()
+        : []
+      }
     }
   })
 </script>
@@ -58,7 +65,7 @@
     background: #d1d1d1;
     padding: 2px 2px 0px 2px;
   }
-  .card {
+  .details {
     background: #5a5a5a;
     padding: 10px;
   }
