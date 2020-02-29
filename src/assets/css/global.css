@@ -10,15 +10,16 @@
 
 /*
   here import is different between nuxt and storybook because of the url path
-  @font-face {
-    font-family: 'Blender Pro Bold', sans-serif;
-    src: url('/sector_034.ttf') local('/sector_034.ttf') format('truetype');
-  }
-  @font-face {
-    font-family: 'Weapons';
-    src: url('/weapons.ttf') format('truetype');
-  }
-  */
+  so serve them from static instead
+*/
+@font-face {
+  font-family: 'Blender Pro Bold', sans-serif;
+  src: url('/fonts/sector_034.ttf') local('/fonts/sector_034.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Weapons';
+  src: url('/fonts/weapons.ttf') format('truetype');
+}
 * {
   margin: 0;
   padding: 0;
