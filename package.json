@@ -94,7 +94,7 @@
     "preoffline": "yarn build && node dist/seed.js",
     "offline": "yarn serverless offline",
     "bundle": "yarn nuxt-ts generate",
-    "start": "yarn nuxt start",
+    "start": "yarn nuxt-ts start",
     "restart": "yarn bundle && yarn start",
     "dev": "yarn nuxt-ts"
   }
