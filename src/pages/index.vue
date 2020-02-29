@@ -9,7 +9,7 @@ import items from '../seeds/manufacturers'
 export default Vue.extend({
   components: { List },
   computed: {
-    items: function () { return items }
+    items: function () { return items.sort() }
   }
 })
 </script>

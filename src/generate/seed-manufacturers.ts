@@ -1,8 +1,8 @@
-import * as fs from 'fs'
-import * as path from 'path'
-import { debug, warn, info } from '../logger'
 import { load } from 'cheerio'
 import * as ejs from 'ejs'
+import * as fs from 'fs'
+import * as path from 'path'
+import { debug, warn } from '../logger'
 import fetch from './fetch'
 const countries = require('country-list-js')
 const parse = (html : string) : string[] => {
@@ -77,7 +77,9 @@ const map = manufacturers => {
   }))
 }
 const write = (filename, content) => {
-  const at = path.join(__dirname, '..', 'seeds', filename)
+  const at = filename.indexOf('.ts') !== -1
+  ? path.join(__dirname, '..', 'seeds', filename)
+  : path.join(__dirname, '..', 'static', filename)
   warn(`writing ${at}`)
   fs.writeFileSync(at, content, { encoding: 'utf8' })
 }
@@ -89,5 +91,6 @@ export default async () => {
     const objects = map(data)
     const rendered = await ejs.renderFile(path.join(__dirname, 'seed-manufacturers.ejs'), { manufacturers: objects })
     write('manufacturers.ts', rendered)
+    write('manufacturers.json', JSON.stringify(objects, null, 2))
   } catch (e) { console.error(e) }  
 }

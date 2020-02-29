@@ -1,10 +1,10 @@
 {
   "name": "@cyb3rpsych0s1s/manufacturer",
   "version": "0.0.0-semantically-released",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "publishConfig": {
     "access": "public"
@@ -18,6 +18,7 @@
     "@nestjs/platform-express": "^6.11.8",
     "@typegoose/typegoose": "^6.4.0",
     "augmented-ui": "^1.1.0",
+    "axios": "^0.19.2",
     "class-validator": "^0.11.0",
     "country-list-js": "^3.1.5",
     "dotenv": "^8.2.0",
@@ -27,7 +28,6 @@
     "mongoose": "^5.9.2",
     "nestjs-typegoose": "^7.1.0",
     "nuxt": "^2.11.0",
-    "request-promise-native": "^1.0.8",
     "voca": "^1.4.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.0",
@@ -82,16 +82,16 @@
   "scripts": {
     "generate": "yarn ts-node src/generate",
     "postgenerate": "yarn build",
-    "lint:ts": "yarn tslint -e 'node_modules/**' -e 'dist/**' -c tslint.json --fix '**/*.ts'",
+    "lint:ts": "yarn tslint -e 'node_modules/**' -e 'dist/**' -e 'lib/**' -e '.nuxt/**' -c tslint.json --fix '**/*.ts'",
     "lint:md": "yarn remark .",
     "lint": "yarn lint:ts && yarn lint:md",
-    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "build": "rm -rf lib && tsc -p tsconfig.json",
     "test": "yarn jest \"^(.*/)*(.*\\.)*(spec|test)\\.ts$\" --passWithNoTests",
     "seed": "yarn ts-node src/seed.ts",
     "storybook": "yarn start-storybook -s ./src/static",
     "prebootstrap": "yarn seed",
     "bootstrap": "yarn ts-node src/bootstrap.ts",
-    "preoffline": "yarn build && node dist/seed.js",
+    "preoffline": "yarn build && node lib/seed.js",
     "offline": "yarn serverless offline",
     "bundle": "yarn nuxt-ts generate",
     "start": "yarn nuxt-ts start",

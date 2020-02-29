@@ -1,4 +1,4 @@
 '**/*.ts':
-  - yarn tslint -e 'node_modules/**' -e 'dist/**' -c tslint.json
+  - yarn tslint -e 'node_modules/**' -e 'dist/**' -e 'lib/**' -e '.nuxt/**' -c tslint.json
 '**/*.md':
   - yarn remark .

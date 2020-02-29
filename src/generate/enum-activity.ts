@@ -1,9 +1,9 @@
+import { load } from 'cheerio'
+import * as ejs from 'ejs'
 import * as fs from 'fs'
 import * as path from 'path'
-import { debug, info, warn } from '../logger'
-import { load } from 'cheerio'
 import { snakeCase } from 'voca'
-import * as ejs from 'ejs'
+import { debug, warn } from '../logger'
 import fetch from './fetch'
 const parse = (html : string) : string[] => {
   debug('parsing html')

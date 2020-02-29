@@ -65,7 +65,16 @@ export default {
   srcDir: 'src/',
   typescript: {
     typeCheck: true,
-    ignoreNotFoundWarnings: true
+    ignoreNotFoundWarnings: true,
+    loaders: {
+      ts: {
+        compilerOptions: {
+          outDir: 'dist',
+          target: 'es2018',
+          module: 'esnext',
+        }
+      },
+    }
   },
   debug: true
 }
