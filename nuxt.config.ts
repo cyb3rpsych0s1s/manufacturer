@@ -40,7 +40,18 @@ export default {
       }
     },
   },
-  buildModules: ['@nuxtjs/vuetify','@nuxt/typescript-build'],
+  buildModules: [
+    '@nuxtjs/vuetify',
+    [
+      '@nuxt/typescript-build',
+      {
+        loaders: {
+          ts: { configFile: 'tsconfig.app.json' },
+          tsx: { configFile: 'tsconfig.app.json' },
+        }
+      }
+    ]
+  ],
   vuetify: {
     theme: {
       dark: true,
@@ -63,9 +74,5 @@ export default {
     '~assets/css/global.css'
   ],
   srcDir: 'src/app/',
-  typescript: {
-    typeCheck: true,
-    ignoreNotFoundWarnings: true,
-  },
-  debug: true
+  debug: true,
 }

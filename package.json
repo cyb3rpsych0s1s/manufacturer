@@ -94,7 +94,7 @@
     "bootstrap": "yarn ts-node --project tsconfig.server.json src/server/bootstrap.ts",
     "preoffline": "yarn build && node lib/seed.js",
     "offline": "yarn serverless offline",
-    "dev": "yarn nuxt-ts",
+    "dev": "yarn nuxt-ts --tsconfig tsconfig.app.json",
     "bundle": "yarn nuxt-ts generate",
     "start": "yarn nuxt-ts start",
     "restart": "yarn bundle && yarn start"

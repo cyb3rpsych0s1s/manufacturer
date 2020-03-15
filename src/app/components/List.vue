@@ -39,7 +39,7 @@
     },
     methods: {
       flagclass: country => `country flag-icon flag-icon-${country.toLowerCase()}`,
-      slugify: name => slugify(name)
+      slugify: name => `/${slugify(name)}`
     },
     computed: {
       sorted: function () {
