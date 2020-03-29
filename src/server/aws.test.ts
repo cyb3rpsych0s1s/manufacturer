@@ -20,8 +20,8 @@ const teardown = async () => {
   return true
 }
 describe('aws', () => {
-  beforeAll(() => setup())
-  afterAll(() => teardown())
+  beforeAll(async () => await setup())
+  afterAll(async () => await teardown())
   it('fetch', async done => {
     const response : any = await _fetch()
     const outputs = JSON.parse(response.body)
