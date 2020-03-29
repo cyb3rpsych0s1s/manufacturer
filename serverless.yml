@@ -23,7 +23,7 @@ provider:
 
 functions:
   fetch:
-    handler: lib/aws.fetch
+    handler: lib/aws.handler
     events:
       - http:
           path: manufacturers

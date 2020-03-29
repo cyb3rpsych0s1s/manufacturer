@@ -1,14 +1,14 @@
 import { getModelForClass, mongoose } from '@typegoose/typegoose'
 import middy from 'middy'
 import { cors, doNotWaitForEmptyEventLoop, jsonBodyParser } from 'middy/middlewares'
-import environment from './environment'
 import { Manufacturer } from './manufacturer'
-const { database_host, database_options, database_port, database_name } = environment()
+import { connect } from './connect'
+
 let connection
 let model
-const connect = async (name = undefined) => {
+const wire = async (name = undefined) => {
   if (!connection) {
-    connection = await mongoose.connect(`mongodb://${database_host}:${database_port}/${database_name}`, database_options)
+    connection = await connect(name)
     model = getModelForClass(Manufacturer, { existingConnection: connection })
   }
   return model
@@ -18,13 +18,13 @@ export const clean = async () => {
   model = undefined
   connection = undefined
 }
-export const _fetch = async () => {
-  const model = await connect()
+export const fetch = async (name = undefined) => {
+  const model = await wire(name)
   const manufacturers = await model.find().lean()
   return { statusCode: 200, body: JSON.stringify(manufacturers) }
 }
 
-export const fetch = middy(_fetch)
+export const handler = middy(fetch)
 .use(jsonBodyParser())
 .use(doNotWaitForEmptyEventLoop())
 .use(cors())
