@@ -91,10 +91,10 @@
     "seed": "yarn ts-node --project tsconfig.server.json src/server/seed.ts",
     "storybook": "yarn start-storybook -s ./src/app/static",
     "prebootstrap": "yarn seed",
-    "bootstrap": "yarn ts-node --project tsconfig.server.json src/server/bootstrap.ts",
+    "bootstrap": "yarn ts-node --project tsconfig.json src/server/bootstrap.ts",
     "preoffline": "yarn build && node lib/seed.js",
     "offline": "yarn serverless offline",
-    "dev": "yarn nuxt-ts --tsconfig tsconfig.app.json",
+    "dev": "yarn nuxt-ts --tsconfig tsconfig.json",
     "bundle": "yarn nuxt-ts generate",
     "start": "yarn nuxt-ts start",
     "restart": "yarn bundle && yarn start"

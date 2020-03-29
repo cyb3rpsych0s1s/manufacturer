@@ -1,20 +1,11 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
     "rootDir": "src/server",
     "outDir": "lib",
     "target": "es6",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "lib": ["esnext","esnext.asynciterable","dom","es2015","es2016","es2017","es2018"],
-    "types" : ["node", "@types/jest", "@types/joi", "@types/mongoose"],
-    "noImplicitAny": false,
-    "resolveJsonModule": true,
-    "preserveConstEnums": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "declaration": true,
-    "esModuleInterop": true
+    "types" : ["node", "@types/jest", "@types/joi", "@types/mongoose"]
   },
   "exclude": [
     "**/*.spec.ts",
@@ -24,6 +15,7 @@
     "dist",
     "nuxt.config.ts",
     "src/server/seeds/**",
-    "src/server/generate/**"
+    "src/server/generate/**",
+    "src/app/**"
   ]
 }

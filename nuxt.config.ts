@@ -42,15 +42,7 @@ export default {
   },
   buildModules: [
     '@nuxtjs/vuetify',
-    [
-      '@nuxt/typescript-build',
-      {
-        loaders: {
-          ts: { configFile: 'tsconfig.app.json' },
-          tsx: { configFile: 'tsconfig.app.json' },
-        }
-      }
-    ]
+    '@nuxt/typescript-build',
   ],
   vuetify: {
     theme: {
@@ -74,5 +66,10 @@ export default {
     '~assets/css/global.css'
   ],
   srcDir: 'src/app/',
+  ignore: [
+    '**/*.test.*',
+    '**/*.spec.*',
+    '**/*.stories.*',
+  ],
   debug: true,
 }

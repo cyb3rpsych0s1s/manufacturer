@@ -14,9 +14,9 @@ import { slugify } from 'voca'
 
 export default Vue.extend({
   components: { Header, Details },
-  props: ['manufacturer']
-  // computed: {
-  //   manufacturer: function() { return manufacturers.find(({ name }) => slugify(name) === this.$route.params.slug) }
-  // }
+  props: ['manufacturer'],
+  computed: {
+    manufacturer: function() { return manufacturers.find(({ name }) => slugify(name) === this.$route.params.slug) }
+  }
 })
 </script>

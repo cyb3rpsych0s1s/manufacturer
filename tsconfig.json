@@ -23,7 +23,7 @@
     "lib",
     "dist",
     "nuxt.config.ts",
-    "src/app/**/*.stories.[tj]s",
+    "**/*.stories.[tj]s",
     "src/server/**"
   ]
 }
